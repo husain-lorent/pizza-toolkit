@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Poppins:ital,wght@0,100;0,300;0,400;1,100&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+}
+.paginate {
+  @apply pt-1;
+}
+.paginate > li {
+  @apply inline-block px-1  cursor-pointer;
+}
+.paginate > li > a {
+  @apply p-3 border border-orange-400 rounded-[30px] inline-block justify-center w-[45px] h-[45px]
+    text-center leading-5 mr-2 cursor-pointer font-bold
+    hover:text-white text-orange-500 hover:bg-orange-500;
+}
+.paginate > .selected > a {
+  @apply text-white bg-orange-500;
+}
+li {
+  @apply cursor-pointer;
+}

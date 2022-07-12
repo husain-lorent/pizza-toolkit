@@ -1,16 +1,22 @@
-import React, {  } from "react";
-
-const Categories = ({value, onChangeCategory}) => {
-    const categories = ['All', 'Meaty','Vegatarian','Grill','Sharp','Hot Dog']
-
+import React, { useEffect, useState } from "react";
+import categoryData from "../api/categories.json";
+import CategoryList from "./CategoryList";
+const Categories = () => {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    setCategories(categoryData);
+  }, []);
   return (
-    <div className="my-5 overflow-hidden">
-      <ul className="flex gap-5 md:gap-12 overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative">
-      {categories.map((categoryName,index)=>(
-        <li key={index}  className={value === index ? 'bg-gray-600 text-white px-6 py-2 rounded-full' : 'bg-slate-100 px-6 py-2 text-gray-700 rounded-full'}
-         onClick={()=>onChangeCategory(index)}>{categoryName}</li>
-      ))}
-      </ul>
+    <div className="bg-white py-4">
+      <div className="container mx-auto">
+        <h3 className="font-semibold mb-3">Categories</h3>
+        <div className="grid 2xl:grid-cols-12 xl:grid-cols-10 lg:grid-cols-8 md:grid-cols-5 grid-cols-4">
+          {categories &&
+            categories.map((category, index) => (
+              <CategoryList key={index} category={category} />
+            ))}
+        </div>
+      </div>
     </div>
   );
 };
